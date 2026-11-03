@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Calcolatrice</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+    input, button { font-size: 18px; padding: 10px; margin: 2px; }
+  </style>
+</head>
+<body>
+  <input type="text" id="t"> <br>
+  <button onclick="d('+')">+</button>
+  <button onclick="d('-')">-</button>
+  <button onclick="d('*')">*</button>
+  <button onclick="d('/')">/</button> 
+  <br>
+  <br>
+  <button onclick="c()">C</button>
+  <button onclick="r()">=</button>
+  <script>
+    const t = document.getElementById("t");
+    function d(v) { t.value += v; }
+    function c() { t.value = ""; }
+    function r() {
+      try {
+        t.value = new Function("return " + t.value)();
+      } catch (e) {
+        t.value = "Errore";
+      }
+    }
+  </script>
+
+</body>
+</html>

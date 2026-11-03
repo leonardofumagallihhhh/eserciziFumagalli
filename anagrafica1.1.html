@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scheda TEST1</title>
+</head>
+<body>
+    <h1>Inserisci Dati </h1>
+    <label for="nome">Nome:</label><br>
+    <input type="text" id="nome"><br><br>
+
+    <label for="cognome">Cognome:</label><br>
+    <input type="text" id="cognome"><br><br>
+
+    <label for="eta">Eta':</label><br>
+    <input type="number" id="eta"><br><br>
+
+    <label for="indirizzo">Indirizzo:</label><br>
+    <input type="text" id="indirizzo"><br><br>
+
+    <label>Sesso:</label><br>
+    <input type="radio" id="sessoM" name="sesso" value="M" checked>
+    <label for="sessoM">M</label>
+    
+    <input type="radio" id="sessoF" name="sesso" value="F">
+    <label for="sessoF">F</label>
+    
+    <input type="radio" id="sessoAltro" name="sesso" value="Altro">
+    <label for="sessoAltro">Altro</label>
+    <br><br>
+    <button onclick="aggiungiDati()">Aggiungi alla tabella</button>
+    <hr>
+    <h2>Tabella Anagrafica</h2>
+    <table border="1" id="tabellaAnagrafica">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Età</th>
+                <th>Indirizzo</th>
+                <th>Sesso</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script>
+        function aggiungiDati() {
+            let nome = document.getElementById("nome").value;
+            let cognome = document.getElementById("cognome").value;
+            let eta = document.getElementById("eta").value;
+            let indirizzo = document.getElementById("indirizzo").value;
+            let sessoselezionato = document.querySelector('input[name="sesso"]:checked').value;
+            let tabella = document.getElementById("tabellaAnagrafica").getElementsByTagName('tbody')[0];
+            let Riga = tabella.insertRow();
+            let cellanome = Riga.insertCell(0);
+            let cellacognome = Riga.insertCell(1);
+            let cellaeta = Riga.insertCell(2);
+            let cellaindirizzo = Riga.insertCell(3);
+            let cellasesso = Riga.insertCell(4);
+            cellanome.textContent = nome;
+            cellacognome.textContent = cognome;
+            cellaeta.textContent = eta;
+            cellaindirizzo.textContent = indirizzo;
+            cellasesso.textContent = sessoselezionato;
+            document.getElementById("nome").value = "";
+            document.getElementById("cognome").value = "";
+            document.getElementById("eta").value = "";
+            document.getElementById("indirizzo").value = "";
+            document.getElementById("sessoM").checked = true;
+        }
+    </script>
+
+</body>
+</html>
